@@ -3,14 +3,14 @@
 import { useCallback, useState } from "react";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
-import { SafeReservations, SafeUser } from "../types";
+import { SafeReservation, SafeUser } from "../types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
 import ListingCard from "../components/listing/ListingCard";
 
 interface TripsClientProps {
-    reservations: SafeReservations[];
+    reservations: SafeReservation[];
     currentUser?: SafeUser | null;
 }
 
@@ -56,7 +56,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
                     gap-8
                 "
             >
-                {reservations.map((reservation) => (
+                {reservations.map((reservation: any) => (
                     <ListingCard
                         key={reservation.id}
                         data={reservation.listing}
