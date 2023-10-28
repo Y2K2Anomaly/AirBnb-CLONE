@@ -7,6 +7,7 @@ Live = https://myairbnb01.vercel.app/
 - Book your trips and can cancel your trips.
 - Add or Airbnb your property and can remove anytime.
 - Filter properties by rooms, date and country.
+- Mark properties in your Favorites.
 - Signup and Login through your gmail or github ids. 
 
 # Tools and technologies used 
