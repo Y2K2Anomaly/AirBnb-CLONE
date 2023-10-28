@@ -1,6 +1,6 @@
 "use client"
 
-import { SafeUser, SafeListing, SafeReservations } from "@/app/types";
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types";
 import { useRouter } from "next/navigation";
 import useCountries from "@/app/hooks/useCountries";
 
@@ -12,7 +12,7 @@ import Button from "../Button";
 
 interface ListingCardProps {
     data: SafeListing;
-    reservation?: SafeReservations;
+    reservation?: SafeReservation;
     onAction?: (id: string) => void;
     disabled?: boolean;
     actionLabel?: string;
@@ -51,7 +51,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         }
 
         return data.price;
-    }, [[reservation, data.price]]);
+    }, [reservation, data.price]);
 
     const reservationDate = useMemo(() => {
 

@@ -6,7 +6,7 @@ import ListingInfo from "@/app/components/listing/ListingInfo";
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingReservation from "@/app/components/listing/ListingReservation";
-import { SafeListing, SafeReservations, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-    reservations?: SafeReservations[];
+    reservations?: SafeReservation[];
     listing: SafeListing & {
         user: SafeUser
     };
@@ -107,7 +107,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     const category = useMemo(() => {
         return categories.find((item) => item.label === listing.category)
-    }, []);
+    }, [listing.category]);
 
     return (
         <Container>
