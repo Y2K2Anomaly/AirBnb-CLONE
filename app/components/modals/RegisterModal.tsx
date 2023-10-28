@@ -19,6 +19,9 @@ import toast from 'react-hot-toast';
 import Button from '../Button';
 
 import { signIn } from 'next-auth/react';
+import Avatar from '../Avatar';
+import { MdAddAPhoto } from 'react-icons/md'
+import ImageUpload from '../Inputs/ImageUpload';
 
 const RegisterModal = () => {
     const loginModal = useLoginModal();
@@ -29,6 +32,8 @@ const RegisterModal = () => {
     const {
         register,
         handleSubmit,
+        setValue,
+        watch,
         formState: {
             errors,
         }
@@ -36,9 +41,20 @@ const RegisterModal = () => {
         defaultValues: {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            image: '',
         }
     })
+
+    const image = watch('image');
+
+    const setCustomValue = (id: string, value: any) => {
+        setValue(id, value, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+        })
+    };
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
@@ -68,6 +84,18 @@ const RegisterModal = () => {
                 title="Welcome to Airbnb"
                 subtitle="Create an account"
             />
+            <div className="flex justify-center">
+                <div className='relative'>
+                    <Avatar src={image || undefined} height={100} width={100} />
+                    <MdAddAPhoto color="grey" size={25} className="absolute top-[70%] left-[75%] cursor-pointer" />
+                    <div className="absolute top-0 left-0 w-10 opacity-0 h-2">
+                        <ImageUpload
+                            value={image}
+                            onChange={(value) => setCustomValue('image', value)}
+                        />
+                    </div>
+                </div>
+            </div>
             <Input
                 id="email"
                 label="Email"
