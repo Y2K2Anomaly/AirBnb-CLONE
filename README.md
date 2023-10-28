@@ -10,4 +10,4 @@ Live = https://myairbnb01.vercel.app/
 - Signup and Login through your gmail or github ids. 
 
 # Tools and technologies used 
-NextJS, Tailwind-CSS, typescript, prisma, mongodb, cloudinary, bcrypt, nextjs auth.
+fullstack-NextJS, Tailwind-CSS, typescript, prisma, mongodb, cloudinary, bcrypt, nextjs auth.
